@@ -1,0 +1,114 @@
+body {
+  font: 14px "Bahnschrift Condensed",sans-serif;
+  background-color: rgba(0,0,0,0.15);
+}
+
+#mainTitle{
+  font: 48px "Bahnschrift Condensed",sans-serif;
+  font-weight: 400;
+  color: #686868;
+  text-shadow: rgba(0,0,0,0.5) 2px 2px;
+  background-color: white;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+#mainTitle:hover{
+  font: 72px "Bahnschrift Condensed",sans-serif;
+  font-weight: 400;
+  color: black;
+  letter-spacing: 3px;
+  text-shadow: rgba(0,0,0,0.5) 4px 4px;
+  background-color: white;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+#mainSubtitle{
+  font: 24px "Bahnschrift Condensed",sans-serif;
+  font-weight: 200;
+  color: #424242;
+  text-shadow: rgba(0,0,0,0.5) 2px 2px;
+  background-color: white;
+  transition-duration: 0.5s;
+}
+#mainSubtitle:hover{
+  font: 36px "Bahnschrift Condensed",sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: black;
+  text-shadow: rgba(0,0,0,0.5) 4px 4px;
+  background-color: white;
+  transition-duration: 0.5s;
+}
+
+#mainHeader{
+  background-color: white;
+  text-align: center;
+}
+#mainFooter{
+  text-align: center;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+#filler1{
+  background-color: white;
+  color:white;
+}
+.btn-group{
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-group button {
+  background-color: #944343; /* Green background */
+  border: 1px solid rgb(128, 0, 0); /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float:left; /* Float the buttons side by side */
+}
+
+.form-def-1 input{
+  cursor: pointer; /* Pointer/hand icon */
+  display:block
+}
+
+.form-def-1 label{
+  font: 16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#sub{
+  background-color: #944343; /* Green background */
+  border: 1px solid rgb(128, 0, 0); /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+}
+
+#bar-btn{
+  background-color: #944343; /* Green background */
+  border: 1px solid rgb(128, 0, 0); /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  text-decoration: none;
+}
+
+.btn-group button:hover {
+  background-color: #571111;
+  transition-duration: 0.5s;
+}
+
+#bar-btn:hover {
+  background-color: #571111;
+  transition-duration: 0.5s;
+}
+
+#sub:hover {
+  background-color: #571111;
+  transition-duration: 0.5s;
+}
