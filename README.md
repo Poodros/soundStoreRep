@@ -5,3 +5,5 @@ While right now, or...whenever you're checking this repo, depending on how lucky
 Rest assured im still working on it :)
 
 Thank you for believing in me
+
+Update 2: Succeeded at connecting to DB. Must figure out how to get login working -- 20/12/2020
