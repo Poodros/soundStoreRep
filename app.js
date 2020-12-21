@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./controllers/index');
+var usersRouter = require('./controllers/users');
+var tasksRouter = require('./controllers/tasks');
+const passport = require('passport')
+const session = require('express-session')
 
 var app = express();
 
@@ -38,16 +40,80 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// Mongo access
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URI, {
-  auth: {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS
-  },
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-}).catch(err => console.error(`Error: ${err}`));
+//database connection
+const mongoose = require('mongoose')
+const globals = require('./config/globals')
+mongoose.connect(globals.db,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }).then(
+    (res) => {
+      console.log('connection ok')
+    }
+).catch(() => {
+  console.log('you failed lol')
+})
+//passport thing....lol
+
+//session config
+app.use(session({
+  secret: 'SoundStoreSecret',
+  resave: true,
+  saveUninitialized:false
+}))
+
+//passport setup
+app.use(passport.initialize())
+app.use(passport.session())
+
+//connect passport and user model
+const User = require('./models/user')
+passport.use(User.createStrategy())
+
+//setup passport for read write
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
+//google login
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+
+passport.use(new GoogleStrategy({
+    clientID: globals.ids.google.clientID,
+    clientSecret: globals.ids.google.clientSecret,
+    callbackURL: globals.ids.google.callbackURL
+},
+    (token, tokenSecret, profile, done) => {
+        User.findOne({oauthId: profile.id}, (err, user)=>{
+            if(err)
+            {
+                console.log(err)
+            }
+            if (!err && user != null)
+            {
+                done(null, user)
+            }
+            else
+            {
+                user = new User({
+                    oauthId: profile.id,
+                    username: profile.displayName,
+                    oauthProvider: 'Google',
+                    created: Date.now()
+                })
+                user.save((err) => {
+                    if(err)
+                    {
+                        console.log(err)
+                    }
+                    else
+                    {
+                        done(null, user)
+                    }
+                })
+            }
+        })
+    }
+))
 
 module.exports = app;

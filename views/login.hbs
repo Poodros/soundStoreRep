@@ -1,3 +1,8 @@
+{{#if messages}}
+    <div class="alert alert-danger">{{messages}}</div>
+{{else}}
+    <div class="alert alert-info">Please Enter Your Credentials </div>
+{{/if}}
 <br/>
 <h2>Login</h2>
 <form method="post">
@@ -16,11 +21,11 @@
         <img src="https://media.discordapp.net/attachments/410227439772499970/789740375186604052/44-442110_jpg-black-and-white-library-google-logo-png.png?width=666&height=667" alt="Google" width="45px" height="45px" />
     </a>
 
-    <a href="/facebook" title="Login with Facebook">
+    <!--<a href="/facebook" title="Login with Facebook">
         <img src="https://media.discordapp.net/attachments/410227439772499970/789740262401376256/facebook_logos_PNG19754.png" alt="Facebook" width="45px" height="45px" />
-    </a>
+    </a>-->
         <hr />
-        Need Access? <a href="register" title="Register">Register</a>
+        Need Access? <a href="register.hbs" title="Register" style="text-decoration: none; color:rgb(39, 202, 181)">Register</a>
     </fieldset>
 </form>
 <br/>
