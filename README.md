@@ -6,4 +6,7 @@ Rest assured im still working on it :)
 
 Thank you for believing in me
 
-Update 2: Succeeded at connecting to DB. Must figure out how to get login working -- 20/12/2020
+Update 2: Succeeded at connecting to DB. Must figure out how to get login working
+Routes can be ignored. Can't figure out how to delete it
+
+-- 20/12/2020
